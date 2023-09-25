@@ -1,6 +1,7 @@
 let coursesData = [
   {
     id_course: 1,
+    thumbnail: '',
     judul_course: 'Microsoft Excel',
     standar_materi: ['image/Astra Logo 1.png', 'image/Bank_Central_Asia 1.png', 'image/download 1.png'],
     skill_diperoleh: 'Membuat formula unik, Membuat data validation, Mengetahui tabel pivot',
@@ -11,6 +12,7 @@ let coursesData = [
   },
   {
     id_course: 2,
+    thumbnail: '',
     judul_course: 'Digital Marketing',
     standar_materi: ['image/emtek.png', 'image/lazada.png', 'image/kompas.png'],
     skill_diperoleh: 'SEO, SEM, PPC, content marketing, social media marketing, email marketing, Meta Ads',
@@ -21,6 +23,7 @@ let coursesData = [
   },
   {
     id_course: 3,
+    thumbnail: '',
     judul_course: 'UI/UX Design',
     standar_materi: ['image/telkom.png', 'image/Shopee 1.png', 'image/goto.png'],
     skill_diperoleh: 'Prototyping, Desain Interaktif, Desain Visual dan Estetika, Psikologi Desain',
@@ -31,6 +34,7 @@ let coursesData = [
   },
   {
     id_course: 4,
+    thumbnail: '',
     judul_course: 'Data Analytics',
     standar_materi: ['image/unilever.png', 'image/pertamina.png', 'image/Nestle 1.png'],
     skill_diperoleh: 'SQL, Python, Data Visualization, membuat script, mengambil data, dan memproses data',
