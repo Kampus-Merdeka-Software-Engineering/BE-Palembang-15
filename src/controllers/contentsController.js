@@ -184,7 +184,7 @@ const getContentsById = (req, res) => {
     }
 };
   
-module.exports = {
+export default {
     getAllContents,
     getContentsById,
 };

@@ -1,7 +1,7 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const coursesRouter = require('./src/routes/coursesRoutes.js');
-const contentsRouter = require('./src/routes/contentsRoutes.js');
+import express from "express";
+import bodyParser from "body-parser";
+import coursesRouter from "./src/routes/coursesRoutes.js";
+import contentsRouter from "./src/routes/contentsRoutes.js";
 
 const app = express();
 const port = 3005;

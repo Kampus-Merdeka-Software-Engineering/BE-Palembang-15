@@ -83,7 +83,7 @@ const getCoursesById = (req, res) => {
     }
 };
   
-module.exports = {
+export default {
     getAllCourses,
     getCoursesById,
 };

@@ -1,8 +1,9 @@
-const express = require('express');
-const coursesRouter = express.Router();
-const coursesController = require('../controllers/coursesController');
+import { Router } from "express";
+import coursesController from "../controllers/coursesController.js";
+
+const coursesRouter = Router();
 
 coursesRouter.get('/', coursesController.getAllCourses);
 coursesRouter.get('/:id', coursesController.getCoursesById);
 
-module.exports = coursesRouter;
+export default coursesRouter;

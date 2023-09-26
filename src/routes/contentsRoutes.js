@@ -1,8 +1,9 @@
-const express = require('express');
-const contentsRouter = express.Router();
-const contentsController = require('../controllers/contentsController');
+import { Router } from "express";
+import contentsController from "../controllers/contentsController.js";
+
+const contentsRouter = Router();
 
 contentsRouter.get('/', contentsController.getAllContents);
 contentsRouter.get('/:id', contentsController.getContentsById);
 
-module.exports = contentsRouter;
+export default contentsRouter;
