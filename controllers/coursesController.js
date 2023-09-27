@@ -82,7 +82,7 @@ const getCoursesById = (req, res) => {
         });
     }
 };
-  
+
 export default {
     getAllCourses,
     getCoursesById,

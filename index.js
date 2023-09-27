@@ -2,10 +2,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import { startSequelize } from "./utils/startSequelize.js";
-import coursesRouter from "./src/routes/coursesRoutes.js";
-import contentsRouter from "./src/routes/contentsRoutes.js";
-import testimonialsRouter from "./src/routes/testimonialsRoutes.js";
-import commentsRouter from "./src/routes/videoCommentsRoutes.js";
+import coursesRouter from "./routes/coursesRoutes.js";
+import contentsRouter from "./routes/contentsRoutes.js";
+import testimonialsRouter from "./routes/testimonialsRoutes.js";
+import commentsRouter from "./routes/videoCommentsRoutes.js";
+import sequelize from "./config/sequelize.js";
+import Courses from "./models/coursesModel.js";
+import Testimonials from "./models/testimonialsModel.js";
 
 dotenv.config();
 
@@ -13,6 +16,17 @@ const app = express();
 const port = 3000;
 
 startSequelize();
+
+sequelize.define("Courses", Courses);
+sequelize.define("Testimonials", Testimonials);
+
+sequelize.sync({ alter: true });
+
+// sequelize.models.Courses.create({
+//     id: 2,
+//     thumbnail: "aaa",
+//     judul: "Microsoft Excel",
+// })
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.raw());
