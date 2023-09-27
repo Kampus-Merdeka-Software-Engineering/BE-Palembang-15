@@ -1,3 +1,6 @@
+import express from "express";
+import { getById, getAll} from "../services/contentsService.js";
+
 let contentsData = [
     {
         id: 1,
@@ -147,42 +150,35 @@ let contentsData = [
   
 //sementara nnti pindah db
 
-const getAllContents = (_, res) => {
-    try {
-        res.json({
-          data: contentsData,
-          message: "Successfully retrieved video!",
-        });
-      } catch (error) {
-        res.status(500);
-        res.json({
-          message: "Internal server error!",
-        });
-      }
-};
-  
-const getContentsById = (req, res) => {
-    try {
-        const { id } = req.params;
-        const contents = contentsData[Number(id) - 1];
-        if (!contents) {
-          res.status(404);
-          res.json({
-            message: "Data not found",
-          });
-        }
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
 
-        res.json({
-          data: contents,
-          message: "Successfully retreive contents!",
-        });
-      } catch (error) {
-        res.status(500);
-        res.json({
-          message: "Internal server error!",
-        });
-    }
-};
+ const getAllContents = async (req, res) => {
+    const ContentsList = await getAll();
+  
+    res.json({
+      data: ContentsList,
+      message: "Data successfully retrieved",
+    })
+  };
+  
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
+
+ const getContentsById = async(req, res) => {
+
+    const contents = await getById(req.params.id);
+    res.json({
+      data: contents,
+      message: "Data successfully retrieved",
+    })
+  };
   
 export default {
     getAllContents,

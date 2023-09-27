@@ -1,3 +1,6 @@
+import express from "express";
+import { getById, getAll} from "../services/coursesService.js";
+
 let coursesData = [
   {
     id_course: 1,
@@ -46,41 +49,34 @@ let coursesData = [
 ];
 //sementara nnti pindah db
 
-const getAllCourses = (_, res) => {
-    try {
-        res.json({
-          data: coursesData,
-          message: "Successfully retrieved courses!",
-        });
-      } catch (error) {
-        res.status(500);
-        res.json({
-          message: "Internal server error!",
-        });
-      }
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
+
+const getAllCourses = async (req, res) => {
+  const CoursesList = await getAll();
+
+  res.json({
+    data: CoursesList,
+    message: "Data successfully retrieved",
+  })
 };
   
-const getCoursesById = (req, res) => {
-    try {
-        const { id } = req.params;
-        const courses = coursesData[Number(id) - 1];
-        if (!courses) {
-          res.status(404);
-          res.json({
-            message: "Data not found",
-          });
-        }
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
 
-        res.json({
-          data: courses,
-          message: "Successfully retreive courses!",
-        });
-      } catch (error) {
-        res.status(500);
-        res.json({
-          message: "Internal server error!",
-        });
-    }
+ const getCoursesById = async(req, res) => {
+
+  const courses = await getById(req.params.id);
+  res.json({
+    data: courses,
+    message: "Data successfully retrieved",
+  })
 };
 
 export default {

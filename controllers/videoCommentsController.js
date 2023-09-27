@@ -1,17 +1,52 @@
-const getAllComments = (req, res) => {
+import express from "express";
+import { create, getById, getAll} from "../services/videoCommentsService.js";
 
-};
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
 
-const getCommentsById = (req, res) => {
+ const getAllComments = async (req, res) => {
+    const commentsList = await getAll();
+  
+    res.json({
+      data: commentsList,
+      message: "Data successfully retrieved",
+    })
+  };
 
-};
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
 
-const createComments = (req, res) => {
+ const getCommentsById = async(req, res) => {
 
-};
+    const comments = await getById(req.params.id);
+    res.json({
+      data: comments,
+      message: "Data successfully retrieved",
+    })
+  };
+
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
+ const createComments = async (req, res) => {
+    const { nama, email, jabatan, komentar } = req.body;
+    await create(nama, email, jabatan, komentar)
+    res.json({
+      message: "Data created successfully",
+    })
+  };
+
 
 export default {
     getAllComments,
-    createComments,
-    getCommentsById
+    getCommentsById,
+    createComments
 };

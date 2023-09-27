@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
-import standarMateri from "./standarMateriModel.js";
+import Courses from "./coursesModel.js";
 
-const Courses = sequelize.define("Courses", {
+const Contents = sequelize.define("Contents", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -19,15 +19,14 @@ const Courses = sequelize.define("Courses", {
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
         allowNull: false,
     },
-    thumbnail: DataTypes.STRING,
-    judulCourse: DataTypes.STRING,
-    skillDiperoleh: DataTypes.STRING,
-    rating: DataTypes.INTEGER,
-    ulasan: DataTypes.STRING,
-    tingkat: DataTypes.STRING,
-    popularitas: DataTypes.INTEGER,
+    judulContent: DataTypes.STRING,
+    video: DataTypes.STRING,
+    deskripsi: DataTypes.STRING,
+    durasi: DataTypes.STRING,
+    episode: DataTypes.INTEGER,
 });
 
-Courses.hasMany(standarMateri);
-standarMateri.belongsTo(Courses);
-export default Courses;
+Courses.hasMany(Contents);
+Contents.belongsTo(Courses);
+
+export default Contents;

@@ -6,9 +6,9 @@ import coursesRouter from "./routes/coursesRoutes.js";
 import contentsRouter from "./routes/contentsRoutes.js";
 import testimonialsRouter from "./routes/testimonialsRoutes.js";
 import commentsRouter from "./routes/videoCommentsRoutes.js";
+import standarMateriRouter from "./routes/standarMateriRoutes.js";
 import sequelize from "./config/sequelize.js";
-import Courses from "./models/coursesModel.js";
-import Testimonials from "./models/testimonialsModel.js";
+
 
 dotenv.config();
 
@@ -16,9 +16,6 @@ const app = express();
 const port = 3000;
 
 startSequelize();
-
-sequelize.define("Courses", Courses);
-sequelize.define("Testimonials", Testimonials);
 
 sequelize.sync({ alter: true });
 
@@ -36,7 +33,8 @@ app.use(bodyParser.json());
 app.use('/courses', coursesRouter);
 app.use('/contents', contentsRouter);
 app.use('/testimonials', testimonialsRouter);
-app.use('/contents', commentsRouter);
+app.use('/comments', commentsRouter);
+app.use('/standarmateri', standarMateriRouter);
 
 //middleware (harus di bawah setelah eksekusi API)
 app.use((error, request, response, next) => {

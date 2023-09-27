@@ -1,6 +1,5 @@
 import express from "express";
-import sequelize from "../config/sequelize.js";
-
+import { create, getById, getAll} from "../services/testimonialsService.js";
 /**
  *
  * @param {express.Request} request
@@ -8,30 +7,36 @@ import sequelize from "../config/sequelize.js";
  */
 
 const getAllTestimonials = async (req, res) => {
-  const TestimonialList = await sequelize.models.Testimonials.findAll();
+  const TestimonialList = await getAll();
 
   res.json({
     data: TestimonialList,
     message: "Data successfully retrieved",
   })
 };
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
 
-const getTestimonialsById = (req, res) => {
+const getTestimonialsById = async(req, res) => {
 
+  const testimonials = await getById(req.params.id);
+  res.json({
+    data: testimonials,
+    message: "Data successfully retrieved",
+  })
 };
 
-const createTestimonials = (req, res) => {
+/**
+ *
+ * @param {express.Request} request
+ * @param {express.Response} response
+ */
+const createTestimonials = async (req, res) => {
   const { id, nama, jabatan, perusahaan, email, layanan, testimoni } = req.body;
-  sequelize.models.Testimonials.create({
-    id,
-    nama, 
-    jabatan, 
-    perusahaan, 
-    email, 
-    layanan, 
-    testimoni,
-  })
-
+  await create(nama, jabatan, perusahaan, email, layanan, testimoni)
   res.json({
     message: "Data created successfully",
   })
