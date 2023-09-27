@@ -1,5 +1,6 @@
 import express from "express";
 import sequelize from "../config/sequelize.js";
+
 /**
  *
  * @param {express.Request} request
