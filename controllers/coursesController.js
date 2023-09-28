@@ -55,13 +55,25 @@ let coursesData = [
  * @param {express.Response} response
  */
 
-const getAllCourses = async (req, res) => {
-  const CoursesList = await getAll();
+const getAllCourses = async (req, res, next) => {
+  try{
+    const CoursesList = await getAll();
 
-  res.json({
-    data: CoursesList,
-    message: "Data successfully retrieved",
-  })
+    if(!CoursesList === null || CoursesList.length === 0){
+      res.status(404);
+      res.json({
+          message: "Data not found"
+      });
+      return;
+    }
+
+    res.json({
+      data: CoursesList,
+      message: "Data successfully retrieved",
+    });
+  } catch (e){
+    next(e);
+  }
 };
   
 /**
@@ -70,14 +82,26 @@ const getAllCourses = async (req, res) => {
  * @param {express.Response} response
  */
 
- const getCoursesById = async(req, res) => {
+ const getCoursesById = async(req, res, next) => {
+  try{
+    const courses = await getById(req.params.id);
 
-  const courses = await getById(req.params.id);
-  res.json({
-    data: courses,
-    message: "Data successfully retrieved",
-  })
-};
+    if(!contents){
+      res.status(404);
+      res.json({
+          message: "Data not found"
+      });
+      return;
+    }
+
+    res.json({
+      data: courses,
+      message: "Data successfully retrieved",
+    });
+  } catch (e){
+    next(e);
+  }
+ };
 
 export default {
     getAllCourses,

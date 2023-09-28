@@ -1,11 +1,12 @@
 import videoComments from "../models/videoCommentsModel.js"
 
-export const create = async (nama, email, jabatan, komentar) => {
+export const create = async (nama, email, jabatan, komentar, ContentId) => {
     await videoComments.create({
         nama,
         email,
         jabatan,
         komentar,
+        ContentId: ContentId,
     });
 };
 

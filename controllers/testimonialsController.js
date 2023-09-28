@@ -6,13 +6,25 @@ import { create, getById, getAll} from "../services/testimonialsService.js";
  * @param {express.Response} response
  */
 
-const getAllTestimonials = async (req, res) => {
-  const TestimonialList = await getAll();
+const getAllTestimonials = async (req, res, next) => {
+  try{
+    const TestimonialList = await getAll();
 
-  res.json({
-    data: TestimonialList,
-    message: "Data successfully retrieved",
-  })
+    if(!TestimonialList === null || TestimonialList.length === 0){
+      res.status(404);
+      res.json({
+          message: "Data not found"
+      });
+      return;
+    }
+
+    res.json({
+      data: TestimonialList,
+      message: "Data successfully retrieved",
+    });
+  } catch (e){
+    next(e);
+  }
 };
 /**
  *
@@ -20,13 +32,25 @@ const getAllTestimonials = async (req, res) => {
  * @param {express.Response} response
  */
 
-const getTestimonialsById = async(req, res) => {
+const getTestimonialsById = async(req, res, next) => {
+  try{
+    const testimonials = await getById(req.params.id);
 
-  const testimonials = await getById(req.params.id);
-  res.json({
-    data: testimonials,
-    message: "Data successfully retrieved",
-  })
+    if(!testimonials){
+      res.status(404);
+      res.json({
+          message: "Data not found"
+      });
+      return;
+    }
+
+    res.json({
+      data: testimonials,
+      message: "Data successfully retrieved",
+    });
+  } catch (e){
+    next(e);
+  }
 };
 
 /**
@@ -34,12 +58,16 @@ const getTestimonialsById = async(req, res) => {
  * @param {express.Request} request
  * @param {express.Response} response
  */
-const createTestimonials = async (req, res) => {
-  const { id, nama, jabatan, perusahaan, email, layanan, testimoni } = req.body;
-  await create(nama, jabatan, perusahaan, email, layanan, testimoni)
-  res.json({
-    message: "Data created successfully",
-  })
+const createTestimonials = async (req, res, next) => {
+  try {
+    const { id, nama, jabatan, perusahaan, email, layanan, testimoni } = req.body;
+    await create(nama, jabatan, perusahaan, email, layanan, testimoni)
+    res.json({
+      message: "Data created successfully",
+    });
+  } catch (e){
+    next(e);
+  }
 };
 
 

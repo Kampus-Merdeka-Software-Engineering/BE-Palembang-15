@@ -156,14 +156,26 @@ let contentsData = [
  * @param {express.Response} response
  */
 
- const getAllContents = async (req, res) => {
-    const ContentsList = await getAll();
-  
-    res.json({
-      data: ContentsList,
-      message: "Data successfully retrieved",
-    })
-  };
+ const getAllContents = async (req, res, next) => {
+    try{
+        const ContentsList = await getAll();
+    
+        if(!ContentsList === null || ContentsList.length === 0){
+            res.status(404);
+            res.json({
+                message: "Data not found"
+            });
+            return;
+        }
+
+        res.json({
+        data: ContentsList,
+        message: "Data successfully retrieved",
+        });
+    } catch(e){
+        next(e);
+    }  
+ };
   
 /**
  *
@@ -171,14 +183,27 @@ let contentsData = [
  * @param {express.Response} response
  */
 
- const getContentsById = async(req, res) => {
+ const getContentsById = async(req, res, next) => {
+    try{
+        const contents = await getById(req.params.id);
 
-    const contents = await getById(req.params.id);
-    res.json({
-      data: contents,
-      message: "Data successfully retrieved",
-    })
-  };
+        if(!contents){
+            res.status(404);
+            res.json({
+                message: "Data not found"
+            });
+            return;
+        }
+
+        res.json({
+            data: contents,
+            message: "Data successfully retrieved",
+        });
+    } catch (e){
+        next(e);
+    }
+ };
+ 
   
 export default {
     getAllContents,
