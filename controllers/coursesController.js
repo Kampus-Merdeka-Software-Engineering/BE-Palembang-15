@@ -1,5 +1,5 @@
 import express from "express";
-import { getById, getAll} from "../services/coursesService.js";
+import { getById, getAll,getMostPopular} from "../services/coursesService.js";
 
 let coursesData = [
   {
@@ -103,8 +103,29 @@ const getAllCourses = async (req, res, next) => {
   }
  };
 
+ const getPopularCourses = async (req, res) => {
+  try {
+      const popularCourses = await getMostPopular(4);
+      if(!popularCourses){
+        res.status(404);
+        res.json({
+            message: "Data not found"
+        });
+        return;
+      }
+
+      res.json({
+        data: popularCourses,
+        message: "Data successfully retrieved",
+      });
+    } catch (e){
+      next(e);
+    }
+  };
+
 export default {
     getAllCourses,
     getCoursesById,
+    getPopularCourses,
 };
   

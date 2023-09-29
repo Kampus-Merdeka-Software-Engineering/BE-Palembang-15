@@ -3,7 +3,8 @@ import coursesController from "../controllers/coursesController.js";
 
 const coursesRouter = Router();
 
-coursesRouter.get('/', coursesController.getAllCourses);
+coursesRouter.get('/popular', coursesController.getPopularCourses);
 coursesRouter.get('/:id', coursesController.getCoursesById);
+coursesRouter.get('/', coursesController.getAllCourses);
 
 export default coursesRouter;

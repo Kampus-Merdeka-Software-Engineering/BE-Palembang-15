@@ -11,3 +11,10 @@ export const getById = async (id) => {
 export const getAll = async () => {
     return await Courses.findAll();
 };
+
+export const getMostPopular = async (limit = 4) => {
+    return await Courses.findAll({
+        order: [['popularitas', 'DESC']],
+        limit: limit,
+    });
+};
