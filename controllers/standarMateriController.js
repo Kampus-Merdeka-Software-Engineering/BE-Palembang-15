@@ -59,7 +59,7 @@ const getStandarMateriByCourseId = async(req, res, next) => {
   try{
       const standar_materi = await getByCourseId(req.params.courseId);
 
-      if(!standar_materi){
+      if(!standar_materi === null || standar_materi.length === 0){
           res.status(404);
           res.json({
               message: "Data not found"
