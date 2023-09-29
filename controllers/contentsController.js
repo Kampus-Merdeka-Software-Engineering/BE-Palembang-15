@@ -1,5 +1,5 @@
 import express from "express";
-import { getById, getAll, getByCourseId} from "../services/contentsService.js";
+import { getById, getAll, getByCourseId, getByEpisode} from "../services/contentsService.js";
 
 let contentsData = [
     {
@@ -209,10 +209,32 @@ let contentsData = [
     }
  }; 
  
+ const getContentByEpisode = async (req, res, next) => {
+    try{
+      const content = await getByEpisode(req.params.courseId, req.params.episode);
+  
+      if(!content === null || content.length === 0){
+        res.status(404);
+        res.json({
+            message: "Data not found for the specified episode"
+        });
+        return;
+      }
+  
+      res.json({
+        data: content,
+        message: "Content successfully retrieved for the specified episode.",
+      });
+    } catch (e){
+      next(e);
+    }
+  };
+
   
 export default {
     getAllContents,
     getContentsById,
     getContentsByCourseId,
+    getContentByEpisode,
 };
   

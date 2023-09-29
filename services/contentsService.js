@@ -17,3 +17,12 @@ export const getByCourseId = async (courseId) => {
         where: { courseId },
     });
 };
+
+export const getByEpisode = async (courseId, episode) => {
+    return await Contents.findAll({
+      where: {
+        courseId: courseId,
+        episode: episode
+      }
+    });
+  };

@@ -1,5 +1,5 @@
 import express from "express";
-import { getById, getAll,getMostPopular} from "../services/coursesService.js";
+import { getById, getAll, getMostPopular} from "../services/coursesService.js";
 
 let coursesData = [
   {
@@ -122,6 +122,7 @@ const getAllCourses = async (req, res, next) => {
       next(e);
     }
   };
+
 
 export default {
     getAllCourses,
