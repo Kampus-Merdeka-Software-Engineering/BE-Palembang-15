@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
+import Courses from "./coursesModel.js";
 
 const standarMateri = sequelize.define("StandarMateri", {
     id: {
@@ -22,4 +23,10 @@ const standarMateri = sequelize.define("StandarMateri", {
 });
 
 
+Courses.hasMany(standarMateri, {
+    foreignKey: {
+        allowNull: false,
+    },
+});
+standarMateri.belongsTo(Courses);
 export default standarMateri;

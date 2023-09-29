@@ -1,5 +1,5 @@
 import express from "express";
-import { getById, getAll} from "../services/standarMateriService.js";
+import { getById, getAll, getByCourseId} from "../services/standarMateriService.js";
 
 /**
  *
@@ -55,7 +55,29 @@ const getStandarMateriById = async(req, res, next) => {
   }
 };
 
+const getStandarMateriByCourseId = async(req, res, next) => {
+  try{
+      const standar_materi = await getByCourseId(req.params.courseId);
+
+      if(!standar_materi){
+          res.status(404);
+          res.json({
+              message: "Data not found"
+          });
+          return;
+      }
+
+      res.json({
+          data: standar_materi,
+          message: "Data successfully retrieved",
+      });
+  } catch (e){
+      next(e);
+  }
+}; 
+
 export default {
     getAllStandarMateri,
     getStandarMateriById,
+    getStandarMateriByCourseId,
 };

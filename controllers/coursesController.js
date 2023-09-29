@@ -86,7 +86,7 @@ const getAllCourses = async (req, res, next) => {
   try{
     const courses = await getById(req.params.id);
 
-    if(!contents){
+    if(!courses){
       res.status(404);
       res.json({
           message: "Data not found"

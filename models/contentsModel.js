@@ -22,11 +22,14 @@ const Contents = sequelize.define("Contents", {
     judulContent: DataTypes.STRING,
     video: DataTypes.STRING,
     deskripsi: DataTypes.STRING,
-    durasi: DataTypes.STRING,
     episode: DataTypes.INTEGER,
 });
 
-Courses.hasMany(Contents);
+Courses.hasMany(Contents, {
+    foreignKey: {
+        allowNull: false,
+    },   
+});
 Contents.belongsTo(Courses);
 
 export default Contents;

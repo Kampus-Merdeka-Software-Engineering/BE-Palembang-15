@@ -5,5 +5,6 @@ const standarMateriRouter = Router();
 
 standarMateriRouter.get('/', standarMateriController.getAllStandarMateri);
 standarMateriRouter.get('/:id', standarMateriController.getStandarMateriById);
+standarMateriRouter.get('/courses/:courseId', standarMateriController.getStandarMateriByCourseId);
 
 export default standarMateriRouter;

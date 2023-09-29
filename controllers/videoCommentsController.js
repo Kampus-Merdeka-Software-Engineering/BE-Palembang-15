@@ -1,5 +1,5 @@
 import express from "express";
-import { create, getById, getAll} from "../services/videoCommentsService.js";
+import { create, getById, getAll, getByContentId} from "../services/videoCommentsService.js";
 
 /**
  *
@@ -72,9 +72,30 @@ import { create, getById, getAll} from "../services/videoCommentsService.js";
   }
  };
 
+ const getCommentsByContentId = async(req, res, next) => {
+  try{
+      const comments = await getByContentId(req.params.contentId);
+
+      if(!comments){
+          res.status(404);
+          res.json({
+              message: "Data not found"
+          });
+          return;
+      }
+
+      res.json({
+          data: comments,
+          message: "Data successfully retrieved",
+      });
+  } catch (e){
+      next(e);
+  }
+}; 
 
 export default {
     getAllComments,
     getCommentsById,
-    createComments
+    createComments,
+    getCommentsByContentId,
 };

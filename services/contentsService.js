@@ -11,3 +11,9 @@ export const getById = async (id) => {
 export const getAll = async () => {
     return await Contents.findAll();
 };
+
+export const getByCourseId = async (courseId) => {
+    return await Contents.findAll({
+        where: { courseId },
+    });
+};

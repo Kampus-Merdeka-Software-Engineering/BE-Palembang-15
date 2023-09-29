@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
-import standarMateri from "./standarMateriModel.js";
 
 const Courses = sequelize.define("Courses", {
     id: {
@@ -28,6 +27,5 @@ const Courses = sequelize.define("Courses", {
     popularitas: DataTypes.INTEGER,
 });
 
-Courses.hasMany(standarMateri);
-standarMateri.belongsTo(Courses);
+
 export default Courses;

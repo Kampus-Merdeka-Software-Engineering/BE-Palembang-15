@@ -21,3 +21,9 @@ export const getById = async (id) => {
 export const getAll = async () => {
     return await videoComments.findAll();
 };
+
+export const getByContentId = async (contentId) => {
+    return await videoComments.findAll({
+        where: { contentId },
+    });
+};
