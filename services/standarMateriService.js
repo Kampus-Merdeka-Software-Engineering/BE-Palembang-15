@@ -1,4 +1,4 @@
-import StandarMateri from "../models/StandarMateriModel.js"
+import StandarMateri from "../models/standarMateriModel.js"
 
 export const getById = async (id) => {
     return await StandarMateri.findOne({
