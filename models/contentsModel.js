@@ -21,7 +21,7 @@ const Contents = sequelize.define("Contents", {
     },
     judulContent: DataTypes.STRING,
     video: DataTypes.STRING,
-    deskripsi: DataTypes.STRING,
+    deskripsi: DataTypes.TEXT,
     episode: DataTypes.INTEGER,
 });
 

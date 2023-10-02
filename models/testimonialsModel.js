@@ -13,7 +13,7 @@ const Testimonials = sequelize.define("Testimonials", {
     perusahaan: DataTypes.STRING,
     email: DataTypes.STRING,
     layanan: DataTypes.STRING,
-    testimoni: DataTypes.STRING,
+    testimoni: DataTypes.TEXT,
 });
 
 export default Testimonials;

@@ -12,7 +12,7 @@ const videoComments = sequelize.define("Comments", {
     nama: DataTypes.STRING,
     email: DataTypes.STRING,
     jabatan: DataTypes.STRING,
-    komentar: DataTypes.STRING,
+    komentar: DataTypes.TEXT,
 })
 
 //Contents - videoComments (1 to many)
