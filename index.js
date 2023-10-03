@@ -8,6 +8,7 @@ import testimonialsRouter from "./routes/testimonialsRoutes.js";
 import commentsRouter from "./routes/videoCommentsRoutes.js";
 import standarMateriRouter from "./routes/standarMateriRoutes.js";
 import sequelize from "./config/sequelize.js";
+import cors from "cors";
 
 
 dotenv.config();
@@ -25,10 +26,11 @@ sequelize.sync({ alter: true });
 //     judul: "Microsoft Excel",
 // })
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded());
 app.use(bodyParser.raw());
 app.use(bodyParser.json());
 
+app.use(cors());
 
 app.use('/courses', coursesRouter);
 app.use('/contents', contentsRouter);
