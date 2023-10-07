@@ -60,7 +60,7 @@ import { getById, getAll, getByCourseId, getByEpisode} from "../services/content
     try{
         const contentsByCourseId = await getByCourseId(req.params.courseId);
 
-        if(!contentsByCourseId){
+        if(!contentsByCourseId === null || contentsByCourseId.length === 0){
             res.status(404);
             res.json({
                 message: "Data not found"
