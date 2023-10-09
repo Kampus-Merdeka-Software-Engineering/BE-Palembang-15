@@ -20,13 +20,7 @@ startSequelize();
 
 sequelize.sync({ alter: true });
 
-// sequelize.models.Courses.create({
-//     id: 2,
-//     thumbnail: "aaa",
-//     judul: "Microsoft Excel",
-// })
-
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.raw());
 app.use(bodyParser.json());
 
