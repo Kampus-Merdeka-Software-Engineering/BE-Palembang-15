@@ -2,8 +2,8 @@ import express from "express";
 import { create, getById, getAll} from "../services/testimonialsService.js";
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
 const getAllTestimonials = async (req, res, next) => {
@@ -28,8 +28,8 @@ const getAllTestimonials = async (req, res, next) => {
 };
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
 const getTestimonialsById = async(req, res, next) => {
@@ -55,8 +55,8 @@ const getTestimonialsById = async(req, res, next) => {
 
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 const createTestimonials = async (req, res, next) => {
   try {

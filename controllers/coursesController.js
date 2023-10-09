@@ -4,8 +4,8 @@ import { getById, getAll, getMostPopular} from "../services/coursesService.js";
 
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
 const getAllCourses = async (req, res, next) => {
@@ -31,8 +31,8 @@ const getAllCourses = async (req, res, next) => {
   
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
  const getCoursesById = async(req, res, next) => {

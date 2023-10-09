@@ -3,8 +3,8 @@ import { getById, getAll, getByCourseId} from "../services/standarMateriService.
 
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
  const getAllStandarMateri = async (req, res, next) => {
@@ -30,8 +30,8 @@ import { getById, getAll, getByCourseId} from "../services/standarMateriService.
 
   /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
 const getStandarMateriById = async(req, res, next) => {

@@ -3,8 +3,8 @@ import { create, getById, getAll, getByContentId} from "../services/videoComment
 
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
  const getAllComments = async (req, res, next) => {
@@ -30,8 +30,8 @@ import { create, getById, getAll, getByContentId} from "../services/videoComment
 
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
  const getCommentsById = async(req, res, next) => {
@@ -57,8 +57,8 @@ import { create, getById, getAll, getByContentId} from "../services/videoComment
 
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
  const createComments = async (req, res, next) => {
   try{

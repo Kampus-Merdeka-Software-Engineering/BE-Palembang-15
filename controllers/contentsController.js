@@ -4,8 +4,8 @@ import { getById, getAll, getByCourseId, getByEpisode} from "../services/content
 
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
  const getAllContents = async (req, res, next) => {
@@ -31,8 +31,8 @@ import { getById, getAll, getByCourseId, getByEpisode} from "../services/content
   
 /**
  *
- * @param {express.Request} request
- * @param {express.Response} response
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 
  const getContentsById = async(req, res, next) => {
